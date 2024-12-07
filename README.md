@@ -79,10 +79,9 @@ The main objective of the regression analysis is to estimate the effect of the P
 
 The **Difference-in-Differences (DiD)** method compares the changes in political support over time between the treatment and control groups, accounting for time trends and group-specific factors. The basic DiD regression model is specified as:
 
-\[
-\text{Political Support}_{it} = \beta_0 + \beta_1 \cdot \text{Treatment}_{it} + \beta_2 \cdot \text{Post}_{t} + \beta_3 \cdot (\text{Treatment}_{it} \times \text{Post}_{t}) + \epsilon_{it}
-\]
-
+```math
+\text{Government Support}_{07} = \beta_0 + \beta_1 \cdot \text{Eligibility} + \beta_2 \cdot \text{Score}_ + \beta_3 \cdot (\text{Eligibility}\times \text{Score}_{t}) + \epsilon
+```
 Where:
 - \(\text{Political Support}_{it}\) is the political support for household \(i\) at time \(t\). This is typically measured as an ordinal variable (e.g., 1-3 scale), with higher values indicating stronger support.
 - \(\text{Treatment}_{it}\) is a binary variable indicating whether household \(i\) was eligible for the PANES transfer at time \(t\). It equals 1 if the household is in the treatment group, 0 otherwise.
@@ -92,31 +91,16 @@ Where:
 
 The coefficient \(\beta_3\) on the interaction term is the DiD estimator and represents the causal effect of receiving the PANES transfer on political support. If the transfer increases political support, we expect \(\beta_3\) to be positive and statistically significant.
 
-#### 2. Regression with Control Variables
 
-While the basic DiD model controls for time and group fixed effects (implicitly), it is often useful to include additional control variables to account for individual-level factors that may influence political support. These controls help to isolate the effect of the PANES transfer from other confounding factors such as household income, education, and age.
-
-The extended model with control variables is specified as:
-
-\[
-\text{Political Support}_{it} = \beta_0 + \beta_1 \cdot \text{Treatment}_{it} + \beta_2 \cdot \text{Post}_{t} + \beta_3 \cdot (\text{Treatment}_{it} \times \text{Post}_{t}) + \gamma \cdot \mathbf{X}_{it} + \epsilon_{it}
-\]
-
-Where:
-- \(\mathbf{X}_{it}\) is a vector of control variables that may include demographic information (e.g., household income, education, age, gender, and geographic location).
-- \(\gamma\) is the vector of coefficients associated with the control variables, which will help to adjust for factors that could confound the relationship between treatment and political support.
-
-This model allows us to refine our estimate of \(\beta_3\) by controlling for important confounders that might otherwise bias the estimate.
-
-#### 3. Nonlinear Effects of Income
+#### 3. Nonlinear Specification
 
 Income is a key factor in determining both eligibility for the PANES transfer and political support. It is possible that the relationship between income and political support is nonlinear. For example, the impact of receiving the PANES transfer might be stronger for lower-income households compared to higher-income ones. 
 
 To explore potential nonlinear effects, the model is extended by including squared income terms to allow for a curvilinear relationship:
 
-\[
+```math
 \text{Political Support}_{it} = \beta_0 + \beta_1 \cdot \text{Treatment}_{it} + \beta_2 \cdot \text{Post}_{t} + \beta_3 \cdot (\text{Treatment}_{it} \times \text{Post}_{t}) + \gamma_1 \cdot \text{Income}_{it} + \gamma_2 \cdot \text{Income}_{it}^2 + \epsilon_{it}
-\]
+```
 
 Where:
 - \(\text{Income}_{it}\) is the household's income.
