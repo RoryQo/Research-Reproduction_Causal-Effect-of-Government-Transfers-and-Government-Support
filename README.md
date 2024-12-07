@@ -1,3 +1,56 @@
+# Replication of "Government Transfers and Political Support" by Manacorda, Miguel, and Vigorito (2011)
+
+## Overview
+
+The paper by Manacorda, Miguel, and Vigorito (2011) explores the effect of government transfers on political support. The authors specifically focus on the *PANES* (Plan de Atención Nacional a la Emergencia Social) program, a large-scale cash transfer program implemented in Uruguay. The objective of the study is to investigate whether the receipt of government transfers increases political support for the ruling government, especially among households that were more directly impacted by the program.
+
+### Key Research Questions
+- **Primary Research Question**: Does receiving government transfers increase political support for the ruling government?
+- **Secondary Question**: How do income levels and eligibility for the PANES program influence political support?
+
+### Contribution
+The study contributes to the literature on the political economy of welfare programs, suggesting that cash transfers can serve as a mechanism for governments to garner political loyalty, particularly among lower-income populations.
+
+
+## Data Description
+
+The study uses data from a survey conducted in Uruguay between 2005 and 2007, focusing on households that participated in the PANES program. The dataset contains key variables related to household characteristics, political support, and eligibility for the program.
+
+### Key Variables
+- **`aprobado`**: A binary variable indicating whether a household received the PANES transfer in 2005-2007.
+- **`untracked07`**: A variable that indicates whether a household was untracked in 2007 (i.e., did not participate in the survey).
+- **`h_89`**: The respondent’s level of political support for the government in 2007 (on a scale from 1 to 3).
+- **`hv34`**: The respondent’s level of political support for the government in 2008 (on a scale from 1 to 3).
+- **`ind_reest`**: Predicted income for each household, used to define treatment eligibility.
+- **`newtreat`**: A variable indicating eligibility for the PANES program.
+
+Additional variables include:
+- **`pct`**: Percentiles of predicted income, which helps to define treatment and control groups.
+- **`income_sq`**: The squared value of predicted income, included as a control in regression models.
+
+
+## Methodology
+
+### 1. **Identification Strategy: Difference-in-Differences (DiD)**
+
+The authors apply a **Difference-in-Differences** (DiD) methodology to estimate the causal effect of receiving the PANES transfer on political support. The key assumption behind this approach is that, in the absence of the treatment (transfers), the political support of treated and control households would have followed parallel trends over time.
+
+#### Treatment Group
+Households that received PANES transfers in 2005-2007 make up the treatment group.
+
+#### Control Group
+Households that did not receive PANES transfers but were eligible based on predicted income levels serve as the control group. Eligibility is determined using the predicted income (`ind_reest`), with households below a certain threshold receiving the PANES transfer.
+
+The DiD model is specified as follows:
+```math
+\text{Political Support}_{it} = \beta_0 + \beta_1 \cdot \text{Treatment}_{it} + \beta_2 \cdot \text{Post}_{t} + \beta_3 \cdot (\text{Treatment}_{it} \times \text{Post}_{t}) + \epsilon_{it}
+```
+Where:
+- \(\text{Treatment}_{it}\) is a binary variable indicating whether the household received the transfer.
+- \(\text{Post}_{t}\) is a binary variable indicating the post-treatment period (2007-2008).
+- The coefficient \(\beta_3\) on the interaction term \(\text{Treatment}_{it} \times \text{Post}_{t}\) captures the causal effect of receiving the PANES transfer on political support.
+
+
 ## Step-by-Step Replication
 
 ### Step 1: Data Preparation
@@ -99,7 +152,7 @@ To ensure that the results are not driven by particular assumptions or model spe
   
 - **Fixed Effects at the Regional Level**: In addition to household fixed effects, we may include fixed effects for geographic regions (e.g., provinces or municipalities) to account for regional trends that could influence both the treatment and political support outcomes.
 
----
+
 
 ### Step 4: Visualizing Results
 
@@ -109,7 +162,7 @@ To ensure that the results are not driven by particular assumptions or model spe
 2. **Scatterplot of Predicted Income and Support**
    - A scatterplot is generated to explore how income levels interact with political support, providing insight into how income might moderate the effect of the PANES transfer on political support.
 
----
+
 
 ## Results Interpretation
 
