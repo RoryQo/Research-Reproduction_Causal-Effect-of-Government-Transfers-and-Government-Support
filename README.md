@@ -1,6 +1,6 @@
 # Replication of "Government Transfers and Political Support" by Manacorda, Miguel, and Vigorito (2011)        
    
-## Overview   
+## Overview    
 
 The paper by Manacorda, Miguel, and Vigorito (2011) explores the effect of government transfers on political support. The authors specifically focus on the *PANES* (Plan de Atención Nacional a la Emergencia Social) program, a large-scale cash transfer program implemented in Uruguay. The objective of the study is to investigate whether the receipt of government transfers increases political support for the ruling government, especially among households that were more directly impacted by the program.
 
