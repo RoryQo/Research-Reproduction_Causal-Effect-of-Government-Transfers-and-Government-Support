@@ -38,19 +38,6 @@ The authors apply a **Difference-in-Differences** (DiD) methodology to estimate 
 #### Treatment Group
 Households that received PANES transfers in 2005-2007 make up the treatment group.
 
-#### Control Group
-Households that did not receive PANES transfers but were eligible based on predicted income levels serve as the control group. Eligibility is determined using the predicted income (`ind_reest`), with households below a certain threshold receiving the PANES transfer.
-
-The DiD model is specified as follows:
-```math
-\text{Political Support}_{it} = \beta_0 + \beta_1 \cdot \text{Treatment}_{it} + \beta_2 \cdot \text{Post}_{t} + \beta_3 \cdot (\text{Treatment}_{it} \times \text{Post}_{t}) + \epsilon_{it}
-```
-Where:
-- \(\text{Treatment}_{it}\) is a binary variable indicating whether the household received the transfer.
-- \(\text{Post}_{t}\) is a binary variable indicating the post-treatment period (2007-2008).
-- The coefficient \(\beta_3\) on the interaction term \(\text{Treatment}_{it} \times \text{Post}_{t}\) captures the causal effect of receiving the PANES transfer on political support.
-
-
 ## Step-by-Step Replication
 
 ### Step 1: Data Preparation
@@ -80,16 +67,16 @@ The main objective of the regression analysis is to estimate the effect of the P
 The **Difference-in-Differences (DiD)** method compares the changes in political support over time between the treatment and control groups, accounting for time trends and group-specific factors. The basic DiD regression model is specified as:
 
 ```math
-\text{Government Support}_{07} = \beta_0 + \beta_1 \cdot \text{Eligibility} + \beta_2 \cdot \text{Score}_ + \beta_3 \cdot (\text{Eligibility}\times \text{Score}_{t}) + \epsilon
+\text{Government Support}_{07} = \beta_0 + \beta_1 \cdot \text{Eligibility} + \beta_2 \cdot \text{Score}_ + \beta_3 \cdot (\text{Eligibility}\times \text{Score}) + \epsilon
 ```
 Where:
-- \(\text{Political Support}_{it}\) is the political support for household \(i\) at time \(t\). This is typically measured as an ordinal variable (e.g., 1-3 scale), with higher values indicating stronger support.
-- \(\text{Treatment}_{it}\) is a binary variable indicating whether household \(i\) was eligible for the PANES transfer at time \(t\). It equals 1 if the household is in the treatment group, 0 otherwise.
-- \(\text{Post}_{t}\) is a binary variable indicating whether the observation is from the post-treatment period (2007-2008). It equals 1 if the observation is after the program's implementation, 0 otherwise.
-- \(\text{Treatment}_{it} \times \text{Post}_{t}\) is the interaction term, which captures the effect of the treatment in the post-treatment period. This is the key variable of interest, as it identifies whether the treatment has had an impact on political support after the program's rollout.
-- \(\epsilon_{it}\) is the error term, assumed to be independently and identically distributed.
+- $\(\text{Political Support}\)$ is the political support for household. This is typically measured as an ordinal variable (e.g., 1-3 scale), with higher values indicating stronger support.
+- $\(\text{Treatment}\)$ is a binary variable indicating whether household \(i\) was eligible for the PANES transfer. It equals 1 if the household is in the treatment group, 0 otherwise.
+- $\(\text{Score}\)$ is predicted income score.
+- $\(\text{Treatment} \times \text{Score}\)$ is the interaction term, which captures the effect of the treatment in the post-treatment period. This is the key variable of interest, as it identifies whether the treatment has had an impact on political support after the program's rollout.
+- $\(\epsilon\)$ is the error term, assumed to be independently and identically distributed.
 
-The coefficient \(\beta_3\) on the interaction term is the DiD estimator and represents the causal effect of receiving the PANES transfer on political support. If the transfer increases political support, we expect \(\beta_3\) to be positive and statistically significant.
+The coefficient $\(\beta_3\)$ on the interaction term is the DiD estimator and represents the causal effect of receiving the PANES transfer on political support. If the transfer increases political support, we expect $\(\beta_3\)$ to be positive and statistically significant.
 
 
 #### 3. Nonlinear Specification
@@ -99,42 +86,30 @@ Income is a key factor in determining both eligibility for the PANES transfer an
 To explore potential nonlinear effects, the model is extended by including squared income terms to allow for a curvilinear relationship:
 
 ```math
-\text{Political Support}_{it} = \beta_0 + \beta_1 \cdot \text{Treatment}_{it} + \beta_2 \cdot \text{Post}_{t} + \beta_3 \cdot (\text{Treatment}_{it} \times \text{Post}_{t}) + \gamma_1 \cdot \text{Income}_{it} + \gamma_2 \cdot \text{Income}_{it}^2 + \epsilon_{it}
+Gov.Support_{07}=\beta_0+\beta_1Eligibility+\beta_2Score+\beta_3Score^2+\beta_4(Eligibility:Score)+\beta_5(Eligibility:Score)^2+\epsilon
 ```
 
 Where:
-- \(\text{Income}_{it}\) is the household's income.
-- \(\text{Income}_{it}^2\) is the squared income term.
+- $\(\text{Score}\)$ is the household's income.
+- $\(\text{Score}^2\)$ is the squared income term.
 
 By including both linear and squared terms for income, this model captures potential diminishing or increasing returns to income with respect to political support.
 
-#### 4. Fixed Effects Models
-
-In the previous models, the analysis assumes that all unobserved heterogeneity across households is captured by the control variables. However, it’s possible that there are unobserved time-invariant characteristics of households (e.g., household preferences, political ideologies) that influence both treatment assignment and political support.
-
-To address this, a fixed-effects model can be used to account for unobserved, time-invariant household characteristics. The fixed-effects model eliminates the bias that could arise from omitted variables that do not change over time (e.g., political beliefs, family dynamics).
-
-The fixed-effects model is specified as:
-
-\[
-\text{Political Support}_{it} = \alpha_i + \beta_1 \cdot \text{Treatment}_{it} + \beta_2 \cdot \text{Post}_{t} + \beta_3 \cdot (\text{Treatment}_{it} \times \text{Post}_{t}) + \gamma \cdot \mathbf{X}_{it} + \epsilon_{it}
-\]
-
-Where:
-- \(\alpha_i\) is the household-specific fixed effect, which absorbs all time-invariant heterogeneity at the household level.
-- The rest of the variables are as defined earlier.
-
-The inclusion of fixed effects controls for all unobservable factors that remain constant over time but may vary across households, providing a cleaner estimate of the treatment effect.
 
 #### 5. Robustness Checks
 
-To ensure that the results are not driven by particular assumptions or model specifications, various robustness checks are conducted. These include:
+To ensure that the results are not driven by particular assumptions or model specifications. 
+The author used 2% bandwidth, we check 1%, 5% and 15% bandwidths to ensure robustness.  All of the coefficients are very similar indicating that the results are robust, because the smaller bandwidth estimates are very similar to the larger bandwidth results.
 
-- **Alternative Operationalizations of Political Support**: Political support may be measured in different ways (e.g., categorical versus continuous outcomes). The analysis is repeated using different measures of political support to ensure the robustness of the findings.
-  
-- **Varying Time Windows**: The post-treatment period may not immediately reflect the full effects of the program. Alternative time windows for the post-treatment period are tested (e.g., 2007–2009) to check if the estimated effect is consistent over time.
-  
-- **Fixed Effects at the Regional Level**: In addition to household fixed effects, we may include fixed effects for geographic regions (e.g., provinces or municipalities) to account for regional trends that could influence both the treatment and political support outcomes.
+```
+# Example of different bandwidths (in terms of score)
+bandwidths <- c(0.01, 0.05, 0.15)  # 1%, 5%, 10% bandwidths around the cutoff
+
+# Subset data for each bandwidth
+narrow_bandwidth_data <- lapply(bandwidths, function(bw) {
+  subset(df, abs(df$ind_reest - cutoff) <= bw)
+})
+```
 
 
 
@@ -152,7 +127,7 @@ To ensure that the results are not driven by particular assumptions or model spe
 
 ### Main Findings:
 1. **Effect of Transfers on Political Support**
-   - The results indicate that the PANES transfer led to a significant increase in political support, particularly among lower-income households. The estimated \(\beta_3\) coefficient is positive and statistically significant, confirming the causal impact of receiving the transfer.
+   - The results indicate that the PANES transfer led to a significant increase in political support, particularly among lower-income households. The estimated $\(\beta_3\)$ coefficient is positive and statistically significant, confirming the causal impact of receiving the transfer.
 
 2. **Income as a Moderator**
    - The interaction between income and political support shows that the effect of the transfer is more pronounced among lower-income households. The results from the nonlinear model suggest that income moderates the effect of the PANES transfer.
