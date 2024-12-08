@@ -1,4 +1,4 @@
-# Replication of "Government Transfers and Political Support" by Manacorda, Miguel, and Vigorito (2011)        
+# Reproduction of "Government Transfers and Political Support" by Manacorda, Miguel, and Vigorito (2011)        
    
 ## Overview     
 
@@ -111,7 +111,9 @@ narrow_bandwidth_data <- lapply(bandwidths, function(bw) {
 })
 ```
 
-
+<p align="center">
+  <img src="https://github.com/RoryQo/Research-Reproduction_Causal-Effect-of-Government-Transfers-and-Government-Support/raw/main/Figures/Robust.jpg" width="400px">
+</p>
 
 ### Step 4: Visualizing Results
 
