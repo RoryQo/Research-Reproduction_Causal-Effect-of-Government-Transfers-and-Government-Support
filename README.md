@@ -1,4 +1,4 @@
-# Replication of "Government Transfers and Political Support" by Manacorda, Miguel, and Vigorito (2011) 
+# Replication of "Government Transfers and Political Support" by Manacorda, Miguel, and Vigorito (2011)  
    
 ## Overview  
 
