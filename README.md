@@ -35,6 +35,10 @@ Additional variables include:
 
 The authors apply a **Difference-in-Differences** (DiD) methodology to estimate the causal effect of receiving the PANES transfer on political support. The key assumption behind this approach is that, in the absence of the treatment (transfers), the political support of treated and control households would have followed parallel trends over time.
 
+<p align="center">
+  <img src="https://github.com/RoryQo/Research-Reproduction_Causal-Effect-of-Government-Transfers-and-Government-Support/raw/main/Figures/Fig2.jpg" width="450px">
+</p>
+
 #### Treatment Group
 Households that received PANES transfers in 2005-2007 make up the treatment group.
 
@@ -74,6 +78,8 @@ The **Difference-in-Differences (DiD)** method compares the changes in political
 
 #### 2. Linear Specification
 
+<br>
+
 ```math
 \text{Government Support}_{07} = \beta_0 + \beta_1 \cdot \text{Eligibility} + \beta_2 \cdot \text{Score}_ + \beta_3 \cdot (\text{Eligibility}\times \text{Score}) + \epsilon
 ```
@@ -93,9 +99,12 @@ Income is a key factor in determining both eligibility for the PANES transfer an
 
 To explore potential nonlinear effects, the model is extended by including squared income terms to allow for a curvilinear relationship:
 
+<br> 
+
 ```math
 Gov.Support_{07}=\beta_0+\beta_1Eligibility+\beta_2Score+\beta_3Score^2+\beta_4(Eligibility:Score)+\beta_5(Eligibility:Score)^2+\epsilon
 ```
+<br>
 
 Where:
 - $\(\text{Score}\)$ is the household's income.
@@ -129,12 +138,19 @@ narrow_bandwidth_data <- lapply(bandwidths, function(bw) {
 
 ### Step 4: Visualizing Results
 
-1. **Graph Political Support Over Time**
+1. **Graph Political Support During Program (Firgure 3.)**
    - Political support is graphed for both the treatment and control groups over time. This provides a visual representation of the parallel trends assumption (i.e., the assumption that, in the absence of the treatment, the treatment and control groups would have followed similar trends in political support).
+  
+<p align="center">
+  <img src="https://github.com/RoryQo/Research-Reproduction_Causal-Effect-of-Government-Transfers-and-Government-Support/raw/main/Figures/Fig3.jpg" width="450px">
+</p>
 
-2. **Scatterplot of Predicted Income and Support**
+2. **Graph Political Support After Program (Figure 4.)**
    - A scatterplot is generated to explore how income levels interact with political support, providing insight into how income might moderate the effect of the PANES transfer on political support.
 
+<p align="center">
+  <img src="https://github.com/RoryQo/Research-Reproduction_Causal-Effect-of-Government-Transfers-and-Government-Support/raw/main/Figures/Fig4.jpg" width="450px">
+</p>
 
 
 ## Results Interpretation
