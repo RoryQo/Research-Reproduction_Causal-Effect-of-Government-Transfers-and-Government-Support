@@ -66,6 +66,14 @@ The main objective of the regression analysis is to estimate the effect of the P
 
 The **Difference-in-Differences (DiD)** method compares the changes in political support over time between the treatment and control groups, accounting for time trends and group-specific factors. The basic DiD regression model is specified as:
 
+<br>
+
+```math
+\text{Government Support}_{07} = \beta_0 + \beta_1 \cdot \text{Eligibility} + \epsilon
+```
+
+#### 2. Linear Specification
+
 ```math
 \text{Government Support}_{07} = \beta_0 + \beta_1 \cdot \text{Eligibility} + \beta_2 \cdot \text{Score}_ + \beta_3 \cdot (\text{Eligibility}\times \text{Score}) + \epsilon
 ```
