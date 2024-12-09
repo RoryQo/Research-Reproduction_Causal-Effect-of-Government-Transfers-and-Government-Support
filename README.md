@@ -58,7 +58,7 @@ Households that received PANES transfers in 2005-2007 make up the treatment grou
 1. **Summarize Data by Treatment Group**
    - Descriptive statistics for key variables (e.g., political support, income, demographic characteristics) are provided separately for the treatment and control groups. This helps to assess any potential differences between the groups prior to the treatment.
 
-### Step 3: Regression Analysis
+### Step 3: Regression Analysis (Reproducing Row 2 of Table 1)
 
 The main objective of the regression analysis is to estimate the effect of the PANES transfer on political support, with a particular focus on how this effect varies by income group. The **Difference-in-Differences (DiD)** methodology is used for this purpose. Below, we specify the regression models in greater detail.
 
@@ -102,6 +102,10 @@ Where:
 - $\(\text{Score}^2\)$ is the squared income term.
 
 By including both linear and squared terms for income, this model captures potential diminishing or increasing returns to income with respect to political support.
+
+<p align="center">
+  <img src="https://github.com/RoryQo/Research-Reproduction_Causal-Effect-of-Government-Transfers-and-Government-Support/raw/main/Figures/R2T1.jpg" width="550px">
+</p>
 
 
 #### 5. Robustness Checks
