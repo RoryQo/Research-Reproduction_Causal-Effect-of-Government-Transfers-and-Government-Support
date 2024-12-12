@@ -53,9 +53,33 @@ Households that received PANES transfers in 2005-2007 make up the treatment grou
 2. **Income Percentiles for Treatment Groups**
    - The predicted income variable (`ind_reest`) is used to calculate income percentiles. Households are then categorized into treatment and control groups based on their predicted income and eligibility for the PANES transfer.
 
+```
+df$pct[df$ind_reest<0]<-xtile(df$ind_reest[df$ind_reest<0],n=30)
+df$pct1[df$ind_reest>=0]<-xtile(df$ind_reest[df$ind_reest>=0],n=15)
+df$pct1<-df$pct1+30
+df$pct[df$ind_reest>=0]<-df$pct1[df$ind_reest>=0]
+```
+
 3. **Create Treatment Indicators**
    - A binary treatment indicator is created: 1 if the household was eligible for the PANES transfer, and 0 otherwise.
    - A post-treatment period indicator is also created, which takes the value 1 if the observation is from the post-treatment period (2007-2008) and 0 otherwise.
+  
+4. **Scale Government Support Variable (2007 & 2008)**
+  - Re-scale the variables that indicate support for the current government so that responses range from 0 to 1
+  - Note: This is how the authors modify this variable in their code. It seems counter intuitive and does not correspond to the description of how this variable is coded in the survey questionnaire as reported in their appendix though it does correspond to their discussion in footnote 12. My guess is the transcription/translation of the survey question is incorrect.
+
+```
+df$h_89_scaled <- ifelse(df$h_89 == 9, NA,
+                         ifelse(df$h_89 == 2, 0,
+                                ifelse(df$h_89 == 1, 0.5,
+                                       ifelse(df$h_89 == 3, 1, NA))))
+
+# Rescale support for the current government in 2008 (hv34)
+df$hv34_scaled <- ifelse(df$hv34 == 9, NA,
+                          ifelse(df$hv34 == 2, 0,
+                                 ifelse(df$hv34 == 1, 0.5,
+                                        ifelse(df$hv34 == 3, 1, NA))))
+```
 
 ### Step 2: Descriptive Analysis
 
@@ -139,14 +163,16 @@ narrow_bandwidth_data <- lapply(bandwidths, function(bw) {
 ### Step 4: Visualizing Results
 
 1. **Graph Political Support During Program (Firgure 3.)**
-   - Political support is graphed for both the treatment and control groups over time. This provides a visual representation of the parallel trends assumption (i.e., the assumption that, in the absence of the treatment, the treatment and control groups would have followed similar trends in political support).
+   - The figure reports the average support for the current government (compared to the previous government) as a function of the standardized score. The fitted plots are linear best-fits
+on each side of the eligibility threshold from the follow up survey in 2007.
   
 <p align="center">
   <img src="https://github.com/RoryQo/Research-Reproduction_Causal-Effect-of-Government-Transfers-and-Government-Support/raw/main/Figures/Fig3.jpg" width="450px">
 </p>
 
 2. **Graph Political Support After Program (Figure 4.)**
-   - A scatterplot is generated to explore how income levels interact with political support, providing insight into how income might moderate the effect of the PANES transfer on political support.
+   - The figure reports the average support for the current government (compared to the previous government) as a function of the standardized score. The fitted plots are linear best-fits
+on each side of the eligibility threshold from the follow-up survey in 2008.
 
 <p align="center">
   <img src="https://github.com/RoryQo/Research-Reproduction_Causal-Effect-of-Government-Transfers-and-Government-Support/raw/main/Figures/Fig4.jpg" width="450px">
