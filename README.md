@@ -1,9 +1,35 @@
-# Reproduction of "Government Transfers and Political Support" by Manacorda, Miguel, and Vigorito (2011)          
-              
+<h2 align="center">Reproducing Research:Government Transfers and Political Support</h2>
+
+<table width="80%" align="center">
+  <tr>   
+    <td colspan="2" align="center"><strong>Table of Contents</strong></td>  
+  </tr> 
+  <tr>
+    <td>1. <a href="#overview">Overview</a></td>   
+    <td>5. <a href="#step-by-step-replication">Step-by-Step Replication</a></td>
+  </tr>
+  <tr> 
+    <td>2. <a href="#data-description">Data Description</a></td>   
+    <td>6. <a href="#results-interpretation">Results Interpretation</a></td>
+  </tr>
+  <tr>
+    <td>3. <a href="#methodology">Methodology</a></td>   
+    <td>7. <a href="#conclusion">Conclusion</a></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">8. <a href="#references">References</a></td>   
+  </tr>
+</table>
+
 ## Overview                
    
 The paper by Manacorda, Miguel, and Vigorito (2011) explores the effect of government transfers on political support. The authors specifically focus on the *PANES* (Plan de Atención Nacional a la Emergencia Social) program, a large-scale cash transfer program implemented in Uruguay. The objective of the study is to investigate whether the receipt of government transfers increases political support for the ruling government, especially among households that were more directly impacted by the program.
 
+
+ [![View Original Research Paper](https://img.shields.io/badge/View%20Original%20Research%20Paper-0056A0?style=flat&logo=external-link&logoColor=white&color=0056A0)](https://www.aeaweb.org/articles?id=10.1257/app.3.3.1) 
+
+ <br>
+ 
 ### Key Research Questions
 - **Primary Research Question**: Does receiving government transfers increase political support for the ruling government?
 - **Secondary Question**: How do income levels and eligibility for the PANES program influence political support?
@@ -190,3 +216,7 @@ on each side of the eligibility threshold from the follow-up survey in 2008.
 
 ### Conclusion:
 The study highlights the role of targeted transfers in shaping political loyalty, with evidence showing that government transfers can increase political support, particularly among low-income populations. These findings are crucial for understanding the political economy of welfare programs and their potential for influencing electoral outcomes.
+
+### References:
+
+Manacorda, Marco, et al. “Government Transfers and Political Support.” American Economic Journal: Applied Economics, vol. 3, no. 3, July 2011, pp. 1–28, emiguel.econ.berkeley.edu/assets/miguel_research/17/_Paper__Government_Transfers_and_Political_Support.pdf, https://doi.org/10.1257/app.3.3.1.
