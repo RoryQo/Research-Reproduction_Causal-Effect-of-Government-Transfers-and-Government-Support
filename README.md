@@ -1,4 +1,4 @@
-<h2 align="center">Reproducing Research:Government Transfers and Political Support</h2>
+<h2 align="center">Reproducing Research: Government Transfers and Political Support</h2>
 
 <table width="80%" align="center">
   <tr>   
