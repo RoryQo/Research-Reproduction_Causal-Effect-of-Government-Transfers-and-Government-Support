@@ -1,25 +1,34 @@
 <h2 align="center">Reproducing Research: Government Transfers and Political Support</h2>
 
-<table width="80%" align="center">
+<table width="100%" align="center" style="table-layout: fixed;">
   <tr>   
     <td colspan="2" align="center"><strong>Table of Contents</strong></td>  
   </tr> 
   <tr>
     <td>1. <a href="#overview">Overview</a></td>   
-    <td>5. <a href="#step-by-step-replication">Step-by-Step Replication</a></td>
+    <td>2. <a href="#data-description">Data Description</a></td>
   </tr>
   <tr> 
-    <td>2. <a href="#data-description">Data Description</a></td>   
-    <td>6. <a href="#results-interpretation">Results Interpretation</a></td>
-  </tr>
-  <tr>
     <td>3. <a href="#methodology">Methodology</a></td>   
-    <td>7. <a href="#conclusion">Conclusion</a></td>
+    <td>4. <a href="#results-interpretation">Results Interpretation</a></td>
   </tr>
   <tr>
-    <td colspan="2" align="center">8. <a href="#references">References</a></td>   
+    <td>5. <a href="#step-by-step-replication">Step-by-Step Replication</a><br>
+      &nbsp;&nbsp;&nbsp;- <a href="#step-1-data-preparation" style="color: black;">Step 1: Data Preparation</a><br>
+      &nbsp;&nbsp;&nbsp;- <a href="#step-2-regression-analysis" style="color: black;">Step 2: Regression Analysis</a><br>
+      &nbsp;&nbsp;&nbsp;- <a href="#step-3-visualizing-results" style="color: black;">Step 3: Visualizing Results</a>
+    </td>
+    <td>6. <a href="#conclusion">Conclusion</a></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">7. <a href="#references">References</a></td>   
   </tr>
 </table>
+
+
+
+
+
 
 ## Overview                
    
@@ -108,7 +117,8 @@ df$hv34_scaled <- ifelse(df$hv34 == 9, NA,
 ```
 
 
-### Step 2: Regression Analysis (Reproducing Row 2 of Table 1)
+### Step 2: Regression Analysis
+#### (Reproducing Row 2 of Table 1)
 
 The main objective of the regression analysis is to estimate the effect of the PANES transfer on political support, with a particular focus on how this effect varies by income group. The **Difference-in-Differences (DiD)** methodology is used for this purpose. Below, we specify the regression models in greater detail.
 
@@ -182,7 +192,7 @@ narrow_bandwidth_data <- lapply(bandwidths, function(bw) {
   <img src="https://github.com/RoryQo/Research-Reproduction_Causal-Effect-of-Government-Transfers-and-Government-Support/raw/main/Figures/Robust.jpg" width="400px">
 </p>
 
-### Step 4: Visualizing Results
+### Step 3: Visualizing Results
 
 1. **Graph Political Support During Program (Firgure 3.)**
    - The figure reports the average support for the current government (compared to the previous government) as a function of the standardized score. The fitted plots are linear best-fits
