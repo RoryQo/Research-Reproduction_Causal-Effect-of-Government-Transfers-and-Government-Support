@@ -107,12 +107,8 @@ df$hv34_scaled <- ifelse(df$hv34 == 9, NA,
                                         ifelse(df$hv34 == 3, 1, NA))))
 ```
 
-### Step 2: Descriptive Analysis
 
-1. **Summarize Data by Treatment Group**
-   - Descriptive statistics for key variables (e.g., political support, income, demographic characteristics) are provided separately for the treatment and control groups. This helps to assess any potential differences between the groups prior to the treatment.
-
-### Step 3: Regression Analysis (Reproducing Row 2 of Table 1)
+### Step 2: Regression Analysis (Reproducing Row 2 of Table 1)
 
 The main objective of the regression analysis is to estimate the effect of the PANES transfer on political support, with a particular focus on how this effect varies by income group. The **Difference-in-Differences (DiD)** methodology is used for this purpose. Below, we specify the regression models in greater detail.
 
