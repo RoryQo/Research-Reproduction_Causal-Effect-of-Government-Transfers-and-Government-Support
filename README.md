@@ -1,6 +1,6 @@
 <h2 align="center">Reproducing Research: Government Transfers and Political Support</h2>
 
-<table width="100%" align="center" style="table-layout: fixed;" >
+<table width="100%" align="center" style="table-layout: fixed;" > 
   <tr>   
     <td colspan="2" align="center"><strong>Table of Contents</strong></td>  
   </tr> 
